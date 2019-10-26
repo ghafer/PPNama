@@ -1,6 +1,5 @@
 const jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt');
-const { User, validate } = require('../models/user');
+const { User } = require('../model/user');
 
 async function registerUser(req, res) {
     const user = new User({
@@ -10,7 +9,7 @@ async function registerUser(req, res) {
         password: req.password,
         role: req.body.role,
     });
-    if (error) return res.status(400).send(error.details[0].message);
+    //if (error) return res.status(400).send(error.details[0].message);
     user.save().then(result => {
         res.status(201).json({
             message: 'User Created',
@@ -55,3 +54,5 @@ async function authenticate(req, res) {
         });
     });
 }
+
+module.exports = { authenticate, registerUser }
