@@ -9,4 +9,5 @@ router.get('/', function(req, res, next) {
 
 router.post('/new', usercontroller.registerUser);
 
+
 module.exports = router;
