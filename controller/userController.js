@@ -33,7 +33,7 @@ async function authenticate(req, res) {
                 message: 'Username is incorrect'
             });
         }
-        return bcrypt.compare(req.body.password, user.password);
+        return (req.body.password === user.password);
     }).then(result => {
         User.findOne({ username: req.body.username }).then(user => {
             if (!result) {
