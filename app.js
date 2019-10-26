@@ -3,11 +3,20 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
+const mongoose = require('mongoose');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
+
+
+mongoose.connect("mongodb://localhost:27017/PPNama",{useNewUrlParser: true}).then(()=>{
+  console.log("Connected to database");
+}).catch(()=>{
+  console.log("Connection Failed");
+});
+
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
