@@ -31,9 +31,9 @@ async function authenticate(req, res) {
                 message: 'Username is incorrect'
             });
         }
-       // return req.body.password === user.password;
-    //}).then(result => {
-       // User.findOne({ username: req.body.username }).then(user => {
+        return (req.body.password === user.password);
+    }).then(result => {
+        User.findOne({ username: req.body.username }).then(user => {
             if (!result) {
                 return res.status(400).json({
                     message: 'Password is incorrect'
